@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro'
+import { useState } from 'preact/hooks';
+
+let numPersons = '';
+const updatePersonsPlaceholder = (event) => {
+    numPersons = event.target.value;
+};
+---
+<Layout title=''>
+    <section class="flex flex-col gap-8 px-12 py-9 h-[28rem] text-center bg-bg-book-mob bg-no-repeat bg-cover bg-center w-full text-white lg:bg-bg-book lg:px-36 lg:text-left">
+            <a href="/"<h2 class="text-5xl font-semibold md:text-left lg:text-4xl lg:mb-16">dine</h2></a>
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-36 h-full">
+            <div class="flex flex-col font-light w-2/3 mx-auto lg:mb-0">
+                <h3 class="text-5xl tracking-widest mb-4">Reservations</h3>
+                <p class="mb-4">
+                    We can’t wait to host you. If you have any special requirements please feel free to 
+                    call on the phone number below. We’ll be happy to accommodate you.
+                </p>
+            </div>
+            <div class="text-center mb-16 lg:hidden">
+                <button class="p-4 border text-white uppercase mx-auto" type="submit">Make a Reservation</button>
+            </div>
+            <div class="bg-white mx-auto md:w-2/3 lg:w-[28rem] text-black z-10">
+                <form class="p-6 z-10 shadow-md rounded-sm flex flex-col gap-8">
+                    <!-- Name -->
+                    <div class="">
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-full" type="text" placeholder="Name" required>
+                    </div>
+                
+                    <!-- Email Address -->
+                    <div class="">
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-full" type="email" placeholder="Email Address" required>
+                    </div>
+                
+                    <!-- Pick a Date -->
+                    <div class="flex gap-2 justify-between">
+                        <label class="pr-12">Pick a date</label>
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" type="number" placeholder="MM" min="1" max="12" required>
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" type="number" placeholder="DD" min="1" max="31" required>
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" type="number" placeholder="YYYY" min="1900" max="2099" required>
+                    </div>
+                
+                    <!-- Pick a Time -->
+                    <div class="flex gap-2 justify-between">
+                        <label class="pr-12">Pick a time</label>
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" type="number" placeholder="HH" min="1" max="12" required>
+                        <input class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" type="number" placeholder="MM" min="0" max="59" required>
+                        <select class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-1/5" required>
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                        </select>
+                    </div>
+                
+                    <!-- Number of Persons -->
+                    <div class="relative">
+                        <input 
+                            value={numPersons}
+                            class="border-b border-gray-300 focus:outline-none focus:border-red-500 w-full text-center" 
+                            type="number" 
+                            min="1" 
+                            placeholder="Number of Persons" 
+                            required
+                        />
+                        <!-- <span class="inline-box">people</span> -->
+                    </div>
+                
+                    <!-- Button -->
+                    <div class="mt-2 text-center">
+                        <button class="w-full py-4 border bg-black mx-auto text-white uppercase" type="submit">Make a Reservation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white h-[28rem] z-0 lg:h-64">
+        <svg class="hidden lg:inline" xmlns="http://www.w3.org/2000/svg" width="993" height="320"><path fill="#5C6779" fill-rule="evenodd" d="M893 320H0V0h993v220c0 55.228-44.772 100-100 100z" opacity=".077"/></svg>
+    </section>
+    <Footer/>
+</Layout>
